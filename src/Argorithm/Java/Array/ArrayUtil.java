@@ -93,13 +93,21 @@ public class ArrayUtil {
 		for (int i = 0; i < data.length - 1; i++) {
 			for (int j = 0; j < data.length - i - 1; j++) {
 				if (data[j] < data[j + 1]) {
-					int temp = data[j];
-					data[j] = data[j + 1];
-					data[j + 1] = temp;
+//					int temp = data[j];
+//					data[j] = data[j + 1];
+//					data[j + 1] = temp;
+					swap(data, j, j + 1);
 				}
 			}
 		}
 		return data;
+	}
+
+	// 传参变为引用数据类型
+	public static void swap(int[] data, int i, int j) {
+		int temp = data[i];
+		data[i] = data[j];
+		data[j] = temp;
 	}
 
 	// 快排
@@ -140,4 +148,13 @@ public class ArrayUtil {
 		quikSort4Arr(left, i - 1);
 		quikSort4Arr(i + 1, right);
 	}
+
+//	public static void main(String[] args) {
+//		int[] data = {1,2,3,4,5,6,7};
+//		data = bubbleSort4Arr(data);
+//		for(int i = 0;i<data.length;i++) {
+//			System.out.print(data[i]+" ");
+//		}
+//		System.out.println();
+//	}
 }
