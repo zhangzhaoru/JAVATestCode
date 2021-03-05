@@ -8,17 +8,20 @@ package OOPTestCLass.Account_Customer;
  * @date 2021年3月5日下午12:42:33
  *
  */
-public class Customer extends Account{
+public class Customer extends Account {
 	private String firstName;
 	private String lastName;
-	private Account account;
 
 	public Customer() {
 		super();
 	}
 
+	public Customer(Account account) {
+		super(account.getId(), account.getBalance(), account.getAnnuallnterestRate());
+	}
+
 	public Customer(String firstName, String lastName, Account account) {
-		super(account.getId(), account.getBalance(),account.getAnnuallnterestRate());
+		super(account.getId(), account.getBalance(), account.getAnnuallnterestRate());
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
@@ -39,19 +42,16 @@ public class Customer extends Account{
 		this.lastName = lastName;
 	}
 
-	public Account getAccount() {
-		return account;
-	}
-
 	public void setAccount(Account account) {
-		this.account = account;
+		super.setId(account.getId());
+		super.setBalance(account.getBalance());
+		super.setAnnuallnterestRate(account.getAnnuallnterestRate());
 	}
 
 	public void disInfo4Customer() {
-		String info = "Customer ["+firstName+","+lastName+"] has a account"
-				+ ": id is "+super.getId()+", annuallnterestRate is "
-				+ super.getAnnuallnterestRate()+" % ,balance is: "
-				+ super.getBalance()+"\n";
+		String info = "Customer [" + firstName + "," + lastName + "] has a account" + ": id is " + super.getId()
+				+ ", annuallnterestRate is " + super.getAnnuallnterestRate() + " % ,balance is: " + super.getBalance()
+				+ "\n";
 		System.out.println(info);
 	}
 
@@ -66,6 +66,5 @@ public class Customer extends Account{
 		// TODO Auto-generated method stub
 		super.deposit(amount);
 	}
-	
-	
+
 }
